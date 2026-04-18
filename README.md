@@ -1,4 +1,7 @@
 # Memory-Allocation-Simulator
+## 🌐 Live Demo  
+ https://melbavarghesecbe-svg.github.io/Memory-Allocation-Simulator/
+ 
 > 🎮 An advanced interactive educational platform that combines simulation, visualization, and game-based learning to demonstrate memory allocation strategies in Operating Systems.
 
 ---
