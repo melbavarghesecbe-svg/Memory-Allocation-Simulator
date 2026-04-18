@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Memory Allocation Visualizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="dashboard-shell">
+    <header class="navbar hero" aria-label="Dashboard header">
+      <p class="hero-badge">Interactive OS Learning Platform</p>
+      <h1>Memory Allocation Visualizer</h1>
+      <p>Learn OS concepts interactively</p>
+    </header>
+
+    <section class="headline-strip" aria-label="Platform highlights">
+      <article class="headline-chip">
+        <span class="chip-label">Learning Modes</span>
+        <strong>Learn, Simulate, Play, Analyze</strong>
+      </article>
+      <article class="headline-chip">
+        <span class="chip-label">Focused Algorithms</span>
+        <strong>First Fit, Best Fit, Worst Fit</strong>
+      </article>
+      <article class="headline-chip">
+        <span class="chip-label">Skill Builder</span>
+        <strong>Timer + Streak + Quiz + Dashboard</strong>
+      </article>
+    </section>
+
+    <main class="dashboard-grid" aria-label="Main dashboard">
+      <section class="card" data-page="learn" tabindex="0" aria-label="Open Learn section">
+        <div class="card-icon">📘</div>
+        <h2>Learn</h2>
+        <p>Understand allocation basics with clear examples and visual memory blocks.</p>
+        <button onclick="openFeaturePage('learn')">Explore</button>
+      </section>
+
+      <section class="card" data-page="simulation" tabindex="0" aria-label="Open Simulation section">
+        <div class="card-icon">⚙️</div>
+        <h2>Simulation</h2>
+        <p>Enter custom blocks and processes to test strategies in real time.</p>
+        <button onclick="openFeaturePage('simulation')">Start Simulation</button>
+      </section>
+
+      <section class="card" data-page="game" tabindex="0" aria-label="Open Game section">
+        <div class="card-icon">🎮</div>
+        <h2>Game</h2>
+        <p>Play timed levels with scoring, streak bonus, and keyboard shortcuts.</p>
+        <button onclick="openFeaturePage('game')">Play Game</button>
+      </section>
+
+      <section class="card" data-page="theory" tabindex="0" aria-label="Open Theory section">
+        <div class="card-icon">📚</div>
+        <h2>Theory</h2>
+        <p>Quick reference notes with small examples for faster revision.</p>
+        <button onclick="openFeaturePage('theory')">Open Theory</button>
+      </section>
+
+      <section class="card" data-page="analytics" tabindex="0" aria-label="Open analytics dashboard">
+        <div class="card-icon">📊</div>
+        <h2>Analytics</h2>
+        <p>Track attempts, algorithm performance, and student learning progress.</p>
+        <button onclick="openFeaturePage('analytics')">Open Analytics</button>
+      </section>
+
+      <section class="card" data-page="compare" tabindex="0" aria-label="Open Compare section">
+        <div class="card-icon">⚖️</div>
+        <h2>Compare</h2>
+        <p>Compare First Fit, Best Fit, and Worst Fit side-by-side instantly.</p>
+        <button onclick="openFeaturePage('compare')">Compare Algorithms</button>
+      </section>
+    </main>
+
+    <section class="quick-stats" aria-label="Quick statistics">
+      <article class="stat-tile">
+        <span>Total Attempts</span>
+        <strong id="dashTotalAttempts">0</strong>
+      </article>
+      <article class="stat-tile">
+        <span>Accuracy</span>
+        <strong id="dashAccuracy">0%</strong>
+      </article>
+      <article class="stat-tile">
+        <span>Best Streak</span>
+        <strong id="dashBestStreak">0</strong>
+      </article>
+    </section>
+
+    <section class="dashboard-info-grid" aria-label="Extra learning information">
+      <article class="tips-panel">
+        <h3>Tips</h3>
+        <ul>
+          <li>💡 Tip: Best Fit minimizes leftover space in many cases.</li>
+          <li>💡 Tip: Use keyboard numbers 1-9 for faster gameplay.</li>
+          <li>💡 Tip: Compare mode helps you understand algorithm trade-offs quickly.</li>
+        </ul>
+      </article>
+
+      <article class="about-panel">
+        <h3>About Project</h3>
+        <p>This tool helps students understand memory allocation visually through simulation, gameplay, and guided theory.</p>
+        <p>Teachers can use analytics to explain performance trends and strengthen OS fundamentals in class.</p>
+      </article>
+    </section>
+
+    <section class="quick-lab" aria-label="Quick allocator lab">
+      <div class="quick-lab-head">
+        <h2>Quick Allocator Lab</h2>
+        <p>Drag the process size to preview how each strategy chooses a block in real time.</p>
+      </div>
+
+      <div class="quick-lab-grid">
+        <div class="quick-controls">
+          <label for="quickProcess">Process Size</label>
+          <input id="quickProcess" type="range" min="80" max="520" value="212" />
+          <div class="quick-readout">Current Process: <strong id="quickProcessValue">212</strong></div>
+        </div>
+
+        <div class="quick-memory" id="quickMemory"></div>
+
+        <div class="quick-results">
+          <div class="quick-result-item"><span>First Fit</span><b id="quickFirstFit">-</b></div>
+          <div class="quick-result-item"><span>Best Fit</span><b id="quickBestFit">-</b></div>
+          <div class="quick-result-item"><span>Worst Fit</span><b id="quickWorstFit">-</b></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="content"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn | Memory Allocation Visualizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="learn-page-body">
+  <div class="learn-page-shell">
+    <header class="learn-hero" aria-label="Learn page header">
+      <p class="learn-badge">Memory Management Notes</p>
+      <h1>Learn Memory Allocation</h1>
+      <p>Beginner-friendly study notes for First Fit, Best Fit, and Worst Fit.</p>
+      <nav class="feature-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="learn.html" class="active" aria-current="page">Learn</a>
+        <a href="simulation.html">Simulation</a>
+        <a href="game.html">Game</a>
+        <a href="theory.html">Theory</a>
+        <a href="compare.html">Compare</a>
+        <a href="analytics.html">Analytics</a>
+      </nav>
+    </header>
+
+    <main class="learn-grid" aria-label="Learning content">
+      <section class="learn-card learn-overview">
+        <h2>What Is Memory Allocation?</h2>
+        <p>
+          Memory allocation is the process of assigning free memory blocks to incoming processes.
+          A good allocation strategy improves utilization and reduces wasted space.
+        </p>
+        <div class="learn-callout">
+          <strong>Goal:</strong> Fit processes quickly while keeping fragmentation low.
+        </div>
+      </section>
+
+      <section class="learn-card">
+        <h2>First Fit</h2>
+        <p>
+          Scan memory from left to right and choose the first block that can hold the process.
+          It is simple and usually fast.
+        </p>
+        <div class="learn-example">
+          <p><strong>Example:</strong> Blocks: 100, 500, 200, 300 | Process: 212</p>
+          <p>First valid block is <strong>500</strong>, so allocate there.</p>
+        </div>
+      </section>
+
+      <section class="learn-card">
+        <h2>Best Fit</h2>
+        <p>
+          Choose the smallest block that is still large enough.
+          This can reduce leftover space for each allocation.
+        </p>
+        <div class="learn-example">
+          <p><strong>Example:</strong> Blocks: 100, 500, 200, 300 | Process: 212</p>
+          <p>Valid blocks: 500, 300. Smallest is <strong>300</strong>.</p>
+        </div>
+      </section>
+
+      <section class="learn-card">
+        <h2>Worst Fit</h2>
+        <p>
+          Choose the largest available block that can fit the process.
+          It keeps medium/smaller blocks free for future processes.
+        </p>
+        <div class="learn-example">
+          <p><strong>Example:</strong> Blocks: 100, 500, 200, 300 | Process: 212</p>
+          <p>Largest valid block is <strong>500</strong>.</p>
+        </div>
+      </section>
+
+      <section class="learn-card">
+        <h2>Fragmentation Notes</h2>
+        <ul>
+          <li><strong>Internal fragmentation:</strong> Process gets a block bigger than needed, so some space inside that block is wasted.</li>
+          <li><strong>External fragmentation:</strong> Total free memory exists, but it is broken into small separated holes.</li>
+          <li><strong>Simple idea:</strong> Internal = waste inside a used block, External = waste between free blocks.</li>
+        </ul>
+      </section>
+
+      <section class="learn-card">
+        <h2>Real OS Connection</h2>
+        <p>
+          In real operating systems, memory managers must place process data in available RAM quickly and safely.
+        </p>
+        <ul>
+          <li><strong>First Fit:</strong> Fast choice in many allocators because it stops early.</li>
+          <li><strong>Best Fit:</strong> Tries to reduce leftover space, but may create many tiny holes.</li>
+          <li><strong>Worst Fit:</strong> Keeps smaller blocks free, but can waste large memory chunks.</li>
+          <li>OS designers balance <strong>speed</strong>, <strong>memory usage</strong>, and <strong>fragmentation</strong>.</li>
+        </ul>
+      </section>
+
+      <section class="learn-card learn-cheatsheet">
+        <h2>Quick Revision Table</h2>
+        <div class="learn-table-wrap">
+          <table class="learn-table">
+            <thead>
+              <tr>
+                <th>Algorithm</th>
+                <th>How it picks</th>
+                <th>Strength</th>
+                <th>Risk</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>First Fit</td>
+                <td>First suitable block</td>
+                <td>Fast and simple</td>
+                <td>Can fragment over time</td>
+              </tr>
+              <tr>
+                <td>Best Fit</td>
+                <td>Smallest suitable block</td>
+                <td>Tight allocation</td>
+                <td>Many tiny fragments</td>
+              </tr>
+              <tr>
+                <td>Worst Fit</td>
+                <td>Largest suitable block</td>
+                <td>Preserves medium blocks</td>
+                <td>Can waste big blocks</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
